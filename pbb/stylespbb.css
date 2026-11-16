@@ -1,0 +1,28 @@
+a:link { color: blue; }
+a:visited { color: purple; }
+a:hover { color: red; }
+a:active { color: orange; }
+
+button:hover { background-color: lightblue; }
+button:focus { outline: 2px solid blue; }
+button:disabled { background-color: lightgray; }
+
+input:checked { accent-color: green; }
+input:required { outline: 2px solid orange; }
+input:valid { accent-color: green; }
+input:invalid { accent-color: red; }
+
+section:target {
+background-color: lightyellow;
+border: 2px solid orange;
+}
+
+p::first-line { color: blue; font-weight: bold; }
+p::first-letter { font-size: 30px; color: red; }
+::selection { background-color: yellow; color: black; }
+
+a[download] { color: green; }
+input[type="radio"] { cursor: pointer; }
+a[href^="https"] { background-color: lightyellow; }
+a[href$=".pdf"] { font-weight: bold; }
+a[href*="gmanetwork"] { color: red; }
