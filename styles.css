@@ -1,26 +1,159 @@
-/* external css file */
+/* ===== METHOD 1: EXTERNAL CSS (styles.css) ===== */
 
+/* Color palette (5 colors only):
+   #f9dbff  light pink-lavender  (page background)
+   #ffffff  white                (cards)
+   #2b2b4f  dark navy            (text)
+   #7b2cbf  purple               (headings, links, borders)
+   #ffff79  soft yellow          (highlights) */
+
+/* ---------- ELEMENT SELECTORS ---------- */
+html {
+    scroll-behavior: smooth;  /* menu links glide to the section */
+}
 body {
-    background-color: rgb(249, 219, 255);
+    background-color: #f9dbff;
+    color: #2b2b4f;
+    font-size: 17px;          /* normal reading size */
+    line-height: 1.6;
+    max-width: 700px;         /* keeps lines short and readable */
+    margin: 0 auto;
+    padding: 24px 16px;
 }
+p {
+    margin: 0;
+}
+hr {
+    border: none;
+    border-top: 2px dashed #7b2cbf;
+    margin: 24px 0;
+}
+
+/* ---------- GROUP SELECTORS ---------- */
+/* headings share one look */
+h1, h2 {
+    color: #7b2cbf;
+    margin: 0 0 10px 0;
+}
+/* header and every section share the same "card" look */
+header, section {
+    background-color: #ffffff;
+    border: 2px solid #7b2cbf;
+    border-radius: 10px;
+    padding: 18px 22px;
+    margin-bottom: 18px;
+    box-shadow: 4px 4px 0 #7b2cbf;
+    transition: background-color 0.3s;
+}
+
+/* ---------- ID SELECTORS ---------- */
+#name {
+    text-align: center;
+    padding-bottom: 8px;
+    border-bottom: 3px solid #7b2cbf;
+}
+#bio {
+    font-size: 0.95em;
+}
+
+/* ---------- CLASS SELECTORS ---------- */
+header {
+    text-align: center;
+}
+.major {
+    font-size: 20px;          /* was 30px, a bit too big */
+    background-color: #ffff79;
+    padding: 2px 12px;
+    border-radius: 6px;
+}
+.game {
+    font-weight: bold;        /* was 70px, way too big */
+}
+
+/* ---------- DESCENDANT SELECTORS ---------- */
+section h2 {
+    font-size: 1.2em;
+}
+p #pl {
+    background-color: #ffff79;
+    font-size: 1em;           /* <sub> normally makes text tiny */
+    vertical-align: baseline; /* ...and drops it below the line */
+    padding: 0 4px;
+    border-radius: 4px;
+}
+
+/* ---------- PSEUDO-CLASS SELECTORS (links) ---------- */
 a {
-    color: rgb(0, 170, 255);
+    text-underline-offset: 3px;
+    transition: background-color 0.2s, color 0.2s;
 }
-.major {  /* class selector */
-        font-size: 30px;
-        }
-.game {   /* class selector gihaponch */
-        font-size: 70px;
-        }
-#name {   /* id selector */
-    color: rgb(0, 0, 150);
+a:link {
+    color: #7b2cbf;
 }
-p #pl {   /* descendant selector */
-    background-color: rgb(255, 255, 121);
+a:visited {
+    color: #2b2b4f;
 }
-a:hover { /* pseudo-class selector */
-    color: rgb(255, 153, 172);
+a:hover {
+    color: #2b2b4f;
+    background-color: #ffff79;
+}
+a:active {
+    color: #ffffff;
+    background-color: #2b2b4f;
+}
+a:focus {
+    outline: 2px solid #2b2b4f;   /* shows up when using the Tab key */
 }
 
+/* ---------- PSEUDO-CLASS :target ---------- */
+/* the section you jumped to from the menu lights up */
+section:target {
+    background-color: #ffff79;
+}
 
+/* ---------- ATTRIBUTE SELECTORS ---------- */
+/* menu links (they start with #) look like buttons */
+nav a[href^="#"] {
+    display: inline-block;
+    background-color: #7b2cbf;
+    color: #ffffff;
+    padding: 6px 14px;
+    margin: 0 4px 8px 4px;
+    border-radius: 20px;
+    text-decoration: none;
+}
+nav a[href^="#"]:hover {
+    background-color: #ffff79;
+    color: #2b2b4f;
+}
+nav a[href^="#"]:active {
+    background-color: #2b2b4f;
+    color: #ffffff;
+}
+/* links that go to other websites (start with https) get an arrow */
+a[href^="https"]::after {
+    content: " \2197";
+    font-size: 0.8em;
+}
 
+/* ---------- PSEUDO-ELEMENTS ---------- */
+/* first letter of each paragraph */
+p::first-letter {
+    color: #7b2cbf;
+    font-weight: bold;
+    font-size: 1.3em;
+}
+/* highlighted text when you select it with the mouse */
+::selection {
+    background-color: #ffff79;
+    color: #2b2b4f;
+}
+
+q {
+    display: inline-block;
+    margin-top: 10px;
+}
+nav {
+    text-align: center;
+    margin: 16px 0;
+}

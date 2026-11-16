@@ -1,35 +1,64 @@
 <!DOCTYPE html>
 <html lang="en">
-<link rel="stylesheet" href="styles.css">
+<head>
+    <meta charset="UTF-8">
+    <title> Marc Dave R. Amorio - Personal Profile</title>
+
+    <!-- METHOD 1: EXTERNAL CSS (the styles.css file) -->
+    <link rel="stylesheet" href="styles.css">
+
+    <!-- METHOD 2: INTERNAL CSS -->
     <style>
             /* Internal CSS */
 
             p {    /* 1st element selector */
-                font-family: "Lucida Console", "Courier New", monospace;   
+                font-family: "Segoe UI", Arial, sans-serif;
             }
             h1 {   /* 2nd element selector */
-                font-family: "Helvetica Neue", Arial, sans-serif;
+                font-family: Georgia, "Times New Roman", serif;
             }
             b, q { /*group selector */
-                font-family: "Comic Sans MS", "Comic Sans", cursive;
+                font-family: Georgia, "Times New Roman", serif;
             }
     </style>
-
-<head>
-    <title> Marc Dave R. Amorio - Personal Profile</title>
-    
 </head>
 <body>
 
-    <h1 id="name">Marc Dave R. Amorio</h1>
-    <b class="major">BS Computer Science</b> <br>
-    <q> My interests are <strong>knowing a game's lore, knowing the plot of the movie without even watching it, and etc.</strong></q>
-    <p> My hobbies are <i>playing video games (specifically <a class="game" href="https://www.roblox.com">Roblox</a>), doomscrolling, and watching football.</i></p>
-    <hr>                                                         /* Incline CSS(nang naay style sa ubos) */
-    <p> Things I enjoy doing (but I probably shouldn't) are <mark style="background-color: rgb(152, 152, 152);">cramming, procastinating, staying up to study.</mark></p> 
-    <p> The thing that I want to learn mostly right now is to know more about programming languages like <sub id="pl">c, python, and more. </sub> </p>
-    <p> A thing I would like others to know about me is that <small id="name">I have a masters degree in doomscrolling and procastinating</small></p>
-    
-    
+    <header>
+        <h1 id="name">Marc Dave R. Amorio</h1>
+        <b class="major">BS Computer Science</b> <br>
+        <q> My interests are <strong>knowing a game's lore, knowing the plot of the movie without even watching it, and etc.</strong></q>
+    </header>
+
+    <nav>
+        <a href="#hobbies">Hobbies</a>
+        <a href="#guilty">Guilty Pleasures</a>
+        <a href="#goals">Goals</a>
+        <a href="#about">About Me</a>
+    </nav>
+
+    <section id="hobbies">
+        <h2>Hobbies</h2>
+        <p> My hobbies are <i>playing video games (specifically <a class="game" href="https://www.roblox.com">Roblox</a>), doomscrolling, and watching football.</i></p>
+    </section>
+
+    <hr>  <!-- Incline CSS (nang naay style sa ubos) -->
+
+    <section id="guilty">
+        <h2>Guilty Pleasures</h2>
+        <!-- METHOD 3: INLINE CSS (style attribute on the mark below) -->
+        <p> Things I enjoy doing (but I probably shouldn't) are <mark style="background-color: #ffff79; color: #2b2b4f;">cramming, procastinating, staying up to study.</mark></p>
+    </section>
+
+    <section id="goals">
+        <h2>Goals</h2>
+        <p> The thing that I want to learn mostly right now is to know more about programming languages like <sub id="pl">c, python, and more. </sub> </p>
+    </section>
+
+    <section id="about">
+        <h2>About Me</h2>
+        <p> A thing I would like others to know about me is that <small id="bio">I have a masters degree in doomscrolling and procastinating</small></p>
+    </section>
+
 </body>
 </html>
