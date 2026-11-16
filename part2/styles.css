@@ -1,0 +1,26 @@
+/* external css file */
+
+body {
+    background-color: rgb(249, 219, 255);
+}
+a {
+    color: rgb(0, 170, 255);
+}
+.major {  /* class selector */
+        font-size: 30px;
+        }
+.game {   /* class selector gihaponch */
+        font-size: 70px;
+        }
+#name {   /* id selector */
+    color: rgb(0, 0, 150);
+}
+p #pl {   /* descendant selector */
+    background-color: rgb(255, 255, 121);
+}
+a:hover { /* pseudo-class selector */
+    color: rgb(255, 153, 172);
+}
+
+
+
