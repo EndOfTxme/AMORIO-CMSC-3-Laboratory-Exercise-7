@@ -2,31 +2,41 @@
 
 /* Color palette (5 colors only):
    #f9dbff  light pink-lavender  (page background)
-   #ffffff  white                (cards)
-   #2b2b4f  dark navy            (text)
+   #ffffff  white                (cards, text on dark)
+   #2b2b4f  dark navy            (text, shadows)
    #7b2cbf  purple               (headings, links, borders)
    #ffff79  soft yellow          (highlights) */
 
 /* ---------- ELEMENT SELECTORS ---------- */
 html {
-    scroll-behavior: smooth;  /* menu links glide to the section */
+    scroll-behavior: smooth;      /* menu links glide to the section */
+    scroll-padding-top: 80px;     /* so the sticky menu doesn't cover the section */
 }
 body {
     background-color: #f9dbff;
     color: #2b2b4f;
-    font-size: 17px;          /* normal reading size */
+    font-size: 17px;              /* normal reading size */
     line-height: 1.6;
-    max-width: 700px;         /* keeps lines short and readable */
+    max-width: 700px;             /* keeps lines short and readable */
     margin: 0 auto;
     padding: 24px 16px;
 }
 p {
     margin: 0;
+    line-height: 1.7;
 }
 hr {
     border: none;
     border-top: 2px dashed #7b2cbf;
     margin: 24px 0;
+}
+mark {
+    padding: 0 4px;
+    border-radius: 4px;           /* the color itself comes from the inline style */
+}
+q {
+    display: inline-block;
+    margin-top: 10px;
 }
 
 /* ---------- GROUP SELECTORS ---------- */
@@ -35,7 +45,7 @@ h1, h2 {
     color: #7b2cbf;
     margin: 0 0 10px 0;
 }
-/* header and every section share the same "card" look */
+/* header, every section and the footer card share the same base look */
 header, section {
     background-color: #ffffff;
     border: 2px solid #7b2cbf;
@@ -43,41 +53,72 @@ header, section {
     padding: 18px 22px;
     margin-bottom: 18px;
     box-shadow: 4px 4px 0 #7b2cbf;
-    transition: background-color 0.3s;
+    transition: background-color 0.3s, transform 0.2s, box-shadow 0.2s;
+}
+
+/* ---------- CLASS SELECTORS ---------- */
+/* the top banner: navy to purple gradient with white text */
+header {
+    background-image: linear-gradient(135deg, #2b2b4f, #7b2cbf);
+    border-color: #2b2b4f;
+    box-shadow: 4px 4px 0 #2b2b4f;
+    color: #ffffff;
+    text-align: center;
+    padding: 28px 22px;
+}
+/* round "MD" badge above the name */
+.avatar {
+    width: 72px;
+    height: 72px;
+    line-height: 72px;            /* centers the letters vertically */
+    border-radius: 50%;
+    background-color: #ffff79;
+    color: #2b2b4f;
+    border: 3px solid #ffffff;
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 28px;
+    font-weight: bold;
+    margin: 0 auto 12px auto;
+}
+.major {
+    font-size: 20px;              /* was 30px, a bit too big */
+    background-color: #ffff79;
+    color: #2b2b4f;
+    padding: 2px 12px;
+    border-radius: 6px;
+}
+.game {
+    font-weight: bold;            /* was 70px, way too big */
 }
 
 /* ---------- ID SELECTORS ---------- */
 #name {
+    color: #ffffff;
+    font-size: 2.2em;
     text-align: center;
-    padding-bottom: 8px;
-    border-bottom: 3px solid #7b2cbf;
+    padding-bottom: 10px;
+    border-bottom: 3px solid #ffff79;
 }
 #bio {
     font-size: 0.95em;
 }
 
-/* ---------- CLASS SELECTORS ---------- */
-header {
-    text-align: center;
-}
-.major {
-    font-size: 20px;          /* was 30px, a bit too big */
-    background-color: #ffff79;
-    padding: 2px 12px;
-    border-radius: 6px;
-}
-.game {
-    font-weight: bold;        /* was 70px, way too big */
-}
-
 /* ---------- DESCENDANT SELECTORS ---------- */
+/* the quote in the banner: the bold part pops out in yellow */
+header q strong {
+    color: #ffff79;
+}
+/* section headings get a purple bar on the left */
 section h2 {
     font-size: 1.2em;
+    border-left: 5px solid #7b2cbf;
+    padding-left: 10px;
 }
 p #pl {
-    background-color: #ffff79;
-    font-size: 1em;           /* <sub> normally makes text tiny */
-    vertical-align: baseline; /* ...and drops it below the line */
+    background-color: #f9dbff;
+    border: 1px solid #7b2cbf;
+    font-size: 1em;               /* <sub> normally makes text tiny */
+    vertical-align: baseline;     /* ...and drops it below the line */
     padding: 0 4px;
     border-radius: 4px;
 }
@@ -85,7 +126,7 @@ p #pl {
 /* ---------- PSEUDO-CLASS SELECTORS (links) ---------- */
 a {
     text-underline-offset: 3px;
-    transition: background-color 0.2s, color 0.2s;
+    transition: background-color 0.2s, color 0.2s, transform 0.2s;
 }
 a:link {
     color: #7b2cbf;
@@ -105,10 +146,28 @@ a:focus {
     outline: 2px solid #2b2b4f;   /* shows up when using the Tab key */
 }
 
+/* ---------- PSEUDO-CLASS :hover on cards ---------- */
+/* the card you point at lifts up a little */
+section:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: 6px 6px 0 #7b2cbf;
+}
+
 /* ---------- PSEUDO-CLASS :target ---------- */
 /* the section you jumped to from the menu lights up */
 section:target {
     background-color: #ffff79;
+}
+
+/* ---------- MENU (sticks to the top while scrolling) ---------- */
+nav {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    background-color: #f9dbff;    /* hides the cards scrolling underneath */
+    text-align: center;
+    padding: 10px 0 4px 0;
+    margin-bottom: 14px;
 }
 
 /* ---------- ATTRIBUTE SELECTORS ---------- */
@@ -125,6 +184,7 @@ nav a[href^="#"] {
 nav a[href^="#"]:hover {
     background-color: #ffff79;
     color: #2b2b4f;
+    transform: translateY(-2px);
 }
 nav a[href^="#"]:active {
     background-color: #2b2b4f;
@@ -149,11 +209,19 @@ p::first-letter {
     color: #2b2b4f;
 }
 
-q {
-    display: inline-block;
-    margin-top: 10px;
-}
-nav {
+/* ---------- FOOTER ---------- */
+footer {
     text-align: center;
-    margin: 16px 0;
+    margin-top: 24px;
+    font-size: 0.9em;
+}
+
+/* ---------- SMALL SCREENS (phones) ---------- */
+@media (max-width: 500px) {
+    #name {
+        font-size: 1.7em;
+    }
+    header, section {
+        padding: 14px 16px;
+    }
 }
